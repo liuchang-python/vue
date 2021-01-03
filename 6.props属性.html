@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .red{
+            color:red;
+        }
+        .blue{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+    <com user="tom"></com>
+    <com user="sam" color="red"></com>
+    <com user="tom" color="blue"></com>
+    <hr>
+    <com user="rose" color="red"></com>
+    <com user="jack" color="blue"></com>
+</div>
+
+<script src="js/vue.min.js"></script>
+<!--<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>-->
+
+<script>
+
+    let com = {
+        template:`<div :class="color">这是我的第一个组件</div>`,
+        props:['user','color'],
+        created:function (){
+            console.log(this.user);
+        },
+        mounted:function (){
+            console.log(this.color)
+        }
+
+    }
+
+
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components:{
+            com:com,
+        }
+    })
+</script>
+</body>
+</html>

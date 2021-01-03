@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div id="app">
+
+    <second></second>
+    <hr>
+    <the></the>
+</div>
+
+<script src="js/vue.min.js"></script>
+<!--<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>-->
+
+<script>
+
+    let second = {
+        template: `
+          <div>这是我的分页组件
+          <div>这是我的分页组件的div</div>
+          <h3>{{ count }}</h3>
+          <button @click="count--;">点我</button>
+          {{title}}
+          </div>`,
+        data: function () {
+            return {
+                count: 50,
+                title: 'www',
+            }
+        },
+        created: function () {
+            if (this.count >= 50) {
+                this.title = '中老年';
+            } else {
+                this.title = '青壮年';
+            }
+        }
+    }
+
+    Vue.component('second', second)
+
+    let the = {
+        template: `
+          <div>101
+          <div>101的div</div>
+          <h3>{{ count }}</h3>
+          <button @click="count--;">点我</button>
+          {{title}}
+          </div>`,
+        data: function () {
+            return {
+                count: 18,
+                title: ''
+            }
+        },
+        created: function () {
+            if (this.count <= 18) {
+                this.title = '未成年';
+            } else {
+                this.title = '好好';
+            }
+        }
+
+    }
+    Vue.component('the', the)
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+    })
+</script>
+</body>
+</html>

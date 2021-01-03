@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div id="app">
+
+    <input type="text" v-model="username">
+    <br>
+    父组件：{{username}}
+    <hr>
+    <app :test="username"></app>
+
+</div>
+
+<div id="main">
+    <hr>
+    第二个组件
+    <input type="text" v-model="username">
+    <br>
+    父组件：{{username}}
+    <hr>
+    <the :name="username"></the>
+</div>
+
+<script src="js/vue.min.js"></script>
+<!--<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>-->
+
+<script>
+
+    let app = {
+        template:`<div>这是父组件传递过来的用户名{{test}}</div>`,
+        props:['test'],
+    }
+
+    new Vue({
+        el: "#app",
+        data: {
+            username:'',
+        },
+        methods: {},
+        components:{
+            app:app
+        }
+    })
+
+
+    let the = {
+        template: `<div>这是父组件传过来的数据{{name}}</div>`,
+        props:['name']
+    }
+    new Vue({
+        el:'#main',
+        data:{
+            username:'',
+        },
+        components: {
+            the:the,
+        }
+
+    })
+</script>
+</body>
+</html>

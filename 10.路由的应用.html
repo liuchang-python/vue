@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div id="app">
+
+    欢迎使用信息管理系统
+    <hr>
+    <router-link to="/index">系统首页</router-link>
+    <router-link to="/user">学生管理</router-link>
+    <router-link to="/teacher">教师管理</router-link>
+    <router-link to="/team">合作单位</router-link>
+    <hr>
+    <router-view></router-view>
+</div>
+
+<script src="js/vue.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<script>
+
+    let index = {
+        template: `<div>
+<h3>这是index页面</h3>
+<h4>欢迎访问信息管理系统</h4>
+<img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3783493444,226126282&fm=26&gp=0.jp" alt="">
+</div>`
+    }
+
+
+    let user = {
+        template: `<div>
+<h3>用户列表</h3>
+<table border="2">
+<tr>
+<td>ID</td>
+<td>姓名</td>
+<td>年龄</td>
+<td>生日</td>
+<td>操作</td>
+</tr>
+<tr v-for="user in user_list" :key="user.id">
+<td>{{ user.id }}</td>
+<td>{{ user.name }}</td>
+<td>{{ user.age }}</td>
+<td>{{ user.bir }}</td>
+<td><a href="">删除</a> | <a href="">修改</a></td>
+</tr>
+</table>
+</div>`,
+        data:function (){
+            return {
+                user_list:[
+                    {id: 1, name: "小花", age: 23, bir: 2002 - 12 - 12},
+                    {id: 2, name: "小白", age: 33, bir: 2012 - 12 - 12},
+                    {id: 3, name: "小黑", age: 43, bir: 202 - 12 - 12},
+                    {id: 4, name: "小绿", age: 53, bir: 1012 - 12 - 12},
+                ]
+            }
+        }
+    }
+
+    let teacher = {
+        template:`<div>教师信息管理首页</div>`
+    }
+
+    let team = {
+        template:`<div>官方合作单位</div>`
+    }
+
+    let myRouter = new VueRouter({
+        routes:[
+            {path:'/index',component:index},
+            {path:'/user',component:user},
+            {path:'/teacher',component: teacher},
+            {path:'/team',component: team}
+        ]
+    })
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        router :myRouter,
+    })
+</script>
+</body>
+</html>

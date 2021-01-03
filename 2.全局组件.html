@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div id="app">
+
+    <com></com>
+    <com></com>
+    <com></com>
+
+    <hr>
+    <the></the>
+    <the></the>
+</div>
+
+<script src="js/vue.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<script>
+
+    let com = {
+        template:`<div>这是我的第一个组件</div>
+        `
+    }
+
+    let the = {
+        template: `<div>这是我的第二个组件</div>`
+    }
+    // 全局组件
+    Vue.component("com",com);
+    Vue.component('the',the);
+
+
+
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+    })
+</script>
+</body>
+</html>
